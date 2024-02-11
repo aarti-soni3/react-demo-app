@@ -2,16 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import Navbar from './Components/Navbar';
-
-// const myFirstElement = <h1>Hello React!</h1>
-
-// function MyFunction(){
-//     return <h1> Hello World! </h1>;
-// }
+import TextForm from './Components/TextForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Navbar/>
+    <>
+        {/* <Navbar title="TextUtills" about="About TextUtills" /> */}
+        <Navbar />
+        <div className='container my-3'>
+        <TextForm heading="Enter the text to analyze" />
+        </div>
+    </>
 );
 
 // If you want to start measuring performance in your app, pass a function
