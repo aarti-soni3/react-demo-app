@@ -25,6 +25,17 @@ export default function TextForm(props) {
         setText(newText);
     }
 
+    const handleCopy = () => {
+        var txt = document.getElementById("my-box");
+        txt.select();
+        navigator.clipboard.writeText(txt.value);
+    }
+
+    const handleExtraSpace = () =>{
+        let newText = text.split(/[  ]+/);
+        setText(newText.join(" "));
+    }
+
     const CapitalizeFirstLetter = (word) => {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     }
@@ -42,6 +53,8 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-3" onClick={upperCase}>Convert To UpperCase</button>
                 <button className="btn btn-primary mx-3" onClick={lowerCase}>Convert To LowerCase</button>
                 <button className="btn btn-primary mx-3" onClick={titleCase}>Convert To TitleCase</button>
+                <button className="btn btn-primary mx-3" onClick={handleExtraSpace}>Remove Extra Space</button>
+                <button className="btn btn-primary mx-3" onClick={handleCopy}>Copy Text</button>
                 <button className="btn btn-primary mx-3" onClick={clearText}>Clear Text</button>
             </div>
             <div className="container">

@@ -1,19 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Navbar from './Components/Navbar';
+import App from './App';
+// import Navbar from './Components/Navbar';
 // import TextForm from './Components/TextForm';
-import About from './Components/About';
+// import About from './Components/About';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <>
-        {/* <Navbar /> */}
-        <Navbar title="TextUtills" about="About TextUtills" />
-        <div className='container my-3'>
-        {/* <TextForm heading="Enter the text to analyze" /> */}
-        <About/>
-        </div>
+       <App/>
     </>
 );
 
