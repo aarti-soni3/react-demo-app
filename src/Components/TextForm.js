@@ -31,7 +31,7 @@ export default function TextForm(props) {
         navigator.clipboard.writeText(txt.value);
     }
 
-    const handleExtraSpace = () =>{
+    const handleExtraSpace = () => {
         let newText = text.split(/[  ]+/);
         setText(newText.join(" "));
     }
@@ -47,9 +47,9 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className="mb-3">
+            <div className="mb-3" style={{ color: props.mode === "dark" ? "white" : "black" }} >
                 <h1>{props.heading}</h1>
-                <textarea id="my-box" className="form-control" onChange={HandleOnChange} value={text} rows="5"></textarea><br />
+                <textarea id="my-box" className="form-control" style={{ backgroundColor: props.mode === "dark" ? "grey" : "white", color: props.mode === "light" ? "black" : "white" }} onChange={HandleOnChange} value={text} rows="5" ></textarea><br />
                 <button className="btn btn-primary mx-3" onClick={upperCase}>Convert To UpperCase</button>
                 <button className="btn btn-primary mx-3" onClick={lowerCase}>Convert To LowerCase</button>
                 <button className="btn btn-primary mx-3" onClick={titleCase}>Convert To TitleCase</button>
@@ -57,13 +57,13 @@ export default function TextForm(props) {
                 <button className="btn btn-primary mx-3" onClick={handleCopy}>Copy Text</button>
                 <button className="btn btn-primary mx-3" onClick={clearText}>Clear Text</button>
             </div>
-            <div className="container">
-                <h2>Your Text Summary </h2>
+            <div className="container" style={{ color: props.mode === "light" ? "black" : "white" }}>
+                <h2  >Your Text Summary </h2>
                 <p>{text.split(" ").length} Words And {text.length} Characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes To Read</p>
 
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length>0 ?text: "Enter To Preview Something..."}</p>
             </div>
         </>
     );
