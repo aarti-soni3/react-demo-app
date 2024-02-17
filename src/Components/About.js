@@ -21,7 +21,8 @@ export default function About() {
         else{
             setMyStyle({
                 color: 'black',
-                backgroundColor:'white'
+                backgroundColor:'white',
+                border:'1px solid black'
             });
             setBtnText("Enable Dark Mode");
         }

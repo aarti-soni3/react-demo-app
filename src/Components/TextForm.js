@@ -13,37 +13,47 @@ export default function TextForm(props) {
     const upperCase = () => {
         const toUpperCase = text.toUpperCase();
         setText(toUpperCase);
+        props.showAlert("success" , "Converted To UpperCase!");
     };
 
     const titleCase = () => {
         let newText = text.split(" ").map(word => CapitalizeFirstLetter(word)).join(" ");
         setText(newText);
+        props.showAlert("success" , "Converted To TitleCase!");
+
     };
 
     const clearText = () => {
         const newText = "";
         setText(newText);
+        props.showAlert("success" , "Text Cleared!");
+
     }
 
     const handleCopy = () => {
         var txt = document.getElementById("my-box");
         txt.select();
         navigator.clipboard.writeText(txt.value);
+        props.showAlert("success" , "Text Copied!");
+
     }
 
     const handleExtraSpace = () => {
         let newText = text.split(/[  ]+/);
         setText(newText.join(" "));
-    }
+        props.showAlert("success" , "Extra Space Removed!");
 
-    const CapitalizeFirstLetter = (word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
     }
 
     const lowerCase = () => {
         const toUpperCase = text.toLowerCase();
         setText(toUpperCase);
+        props.showAlert("success" , "Converted To LowerCase!");
     };
+
+    const CapitalizeFirstLetter = (word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
 
     return (
         <>
@@ -70,5 +80,7 @@ export default function TextForm(props) {
 }
 
 TextForm.propTypes = {
-    heading: PropTypes.string
+    showAlert: PropTypes.object,
+    heading: PropTypes.string,
+    mode: PropTypes.object
 }
