@@ -13,20 +13,20 @@ export default function TextForm(props) {
     const upperCase = () => {
         const toUpperCase = text.toUpperCase();
         setText(toUpperCase);
-        props.showAlert("success" , "Converted To UpperCase!");
+        props.showAlert("success", "Converted To UpperCase!");
     };
 
     const titleCase = () => {
         let newText = text.split(" ").map(word => CapitalizeFirstLetter(word)).join(" ");
         setText(newText);
-        props.showAlert("success" , "Converted To TitleCase!");
+        props.showAlert("success", "Converted To TitleCase!");
 
     };
 
     const clearText = () => {
         const newText = "";
         setText(newText);
-        props.showAlert("success" , "Text Cleared!");
+        props.showAlert("success", "Text Cleared!");
 
     }
 
@@ -34,25 +34,39 @@ export default function TextForm(props) {
         var txt = document.getElementById("my-box");
         txt.select();
         navigator.clipboard.writeText(txt.value);
-        props.showAlert("success" , "Text Copied!");
+        props.showAlert("success", "Text Copied!");
 
     }
 
     const handleExtraSpace = () => {
         let newText = text.split(/[  ]+/);
         setText(newText.join(" "));
-        props.showAlert("success" , "Extra Space Removed!");
+        props.showAlert("success", "Extra Space Removed!");
 
     }
 
     const lowerCase = () => {
         const toUpperCase = text.toLowerCase();
         setText(toUpperCase);
-        props.showAlert("success" , "Converted To LowerCase!");
+        props.showAlert("success", "Converted To LowerCase!");
     };
 
     const CapitalizeFirstLetter = (word) => {
         return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+    }
+
+    function countWordsWithoutSpaces(text) {
+        // Check if text is empty or contains only spaces
+        if (!text.trim()) {
+            return 0;
+        }
+        else if(text.trim()) {
+            return text.trim().split(" ").length;
+        }
+        // Remove spaces and count words
+        // const words = text.split(/\s+/).join('').length;
+        const words = text.split(" ").length;
+        return words;
     }
 
     return (
@@ -69,11 +83,12 @@ export default function TextForm(props) {
             </div>
             <div className="container" style={{ color: props.mode === "light" ? "black" : "white" }}>
                 <h2  >Your Text Summary </h2>
-                <p>{text.split(" ").length} Words And {text.length} Characters</p>
+
+                <p>{countWordsWithoutSpaces(text)} Words And {text.length} Characters</p>
                 <p>{0.008 * text.split(" ").length} Minutes To Read</p>
 
                 <h2>Preview</h2>
-                <p>{text.length>0 ?text: "Enter To Preview Something..."}</p>
+                <p>{text.length > 0 ? text : "Enter To Preview Something..."}</p>
             </div>
         </>
     );
