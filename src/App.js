@@ -46,7 +46,6 @@ function App() {
         document.title = "Install TextUtils Now";
       }, 1200);
 
-
     } else {
       setMode("dark");
       document.body.style.backgroundColor = '#042743';
