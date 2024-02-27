@@ -10,7 +10,7 @@ import {
   // Routes,
   Switch,
   Route,
-  Link
+  // Link
 } from "react-router-dom";
 
 function App() {
@@ -38,19 +38,19 @@ function App() {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("success", "Light Mode Enabled!");
-      document.title = "TextUtils Dark Mode";
-      setInterval(() => {
-        document.title = "TextUtils is amazing....";
-      }, 1000);
-      setInterval(() => {
-        document.title = "Install TextUtils Now";
-      }, 1200);
+      // document.title = "TextUtils Dark Mode";
+      // setInterval(() => {
+      //   document.title = "TextUtils is amazing....";
+      // }, 1000);
+      // setInterval(() => {
+      //   document.title = "Install TextUtils Now";
+      // }, 1200);
 
     } else {
       setMode("dark");
       document.body.style.backgroundColor = '#042743';
       showAlert("success", "Dark Mode Enabled!");
-      document.title = "TextUtils Light Mode";
+      // document.title = "TextUtils Light Mode";
     }
   }
 
@@ -66,7 +66,7 @@ function App() {
               <About mode={mode} />
             </Route>
             <Route path="/">
-              <TextForm showAlert={showAlert} heading="Enter the text to analyze" mode={mode} />
+              <TextForm showAlert={showAlert} heading="TextUtils - Word Counter, Charater Counter, Remove Extra Space " mode={mode} />
             </Route>
           </Switch>
         </div >
